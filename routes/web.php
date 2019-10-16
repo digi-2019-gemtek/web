@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return Redirect::to('/login'); 
 });
+
+Route::get('/login', 'LoginController@show');
+
+Route::post('/login', [ 'as' => 'login', 'uses' => 'LoginController@login']);
+
+Route::get('/logout', 'LoginController@logout');
