@@ -11,12 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return Redirect::to('/user'); 
-})->middleware('auth');
+Route::get('/', ['middleware' => 'auth', function() {
+    return Redirect::to('/dashboard'); 
+}]);
+
+// Route::get('profile', [
+//     'middleware' => 'auth',
+//     'uses' => 'ProfileController@show'
+// ]);
 
 Route::get('/login', 'LoginController@show');
 
-Route::post('/login', ['as' => 'login', 'uses' => 'LoginController@login']);
+Route::post('/login', [
+    'as' => 'login',
+    'uses' => 'LoginController@login'
+]);
 
 Route::get('/logout', 'LoginController@logout');

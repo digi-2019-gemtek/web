@@ -10,7 +10,12 @@ class LoginController extends Controller
 {
     public function show()
     {
-        return view('login');
+        if(Auth::check()){
+            return redirect('/dashboard')->with('status', 'warning')->with('message', __('auth.hasLogin'));
+        }
+        else{
+            return view('login');
+        }
     }
 
     public function login(Request $request)
@@ -19,8 +24,9 @@ class LoginController extends Controller
             'account'  => $request->post('account'),
             'password' => $request->post('password')
         );
+        $user_remember = ($request->post('remember')) ? true : false;
 
-        if(Auth::attempt($user_data)){
+        if(Auth::attempt($user_data, $user_remember)){
             return redirect()->intended('/');
         }
         else{
