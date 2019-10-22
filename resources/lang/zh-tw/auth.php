@@ -6,5 +6,7 @@ return [
     'email' => 'E-mail',
     'account' => '帳號',
     'password' => '密碼',
-    'rememberMe' => '記住我'
+    'rememberMe' => '記住我',
+    'pleaseLoginFirst' => '請先登入',
+    'loginIncorrect' => '帳號或密碼錯誤'
 ];

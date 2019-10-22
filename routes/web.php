@@ -12,12 +12,11 @@
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return Redirect::to('/login'); 
-});
+    return Redirect::to('/user'); 
+})->middleware('auth');
 
 Route::get('/login', 'LoginController@show');
 
-Route::post('/login', [ 'as' => 'login', 'uses' => 'LoginController@login']);
+Route::post('/login', ['as' => 'login', 'uses' => 'LoginController@login']);
 
 Route::get('/logout', 'LoginController@logout');
