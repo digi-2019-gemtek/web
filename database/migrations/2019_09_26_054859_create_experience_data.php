@@ -14,7 +14,7 @@ class CreateExperienceData extends Migration
     public function up()
     {
         Schema::create('experience_data', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamp('data_datetime');
             $table->double('soil_temperature', 15, 8);
             $table->double('soil_humidity', 15, 8);
