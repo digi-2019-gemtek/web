@@ -14,7 +14,7 @@ class LoginController extends Controller
             return redirect('/dashboard')->with('status', 'warning')->with('message', __('auth.hasLogin'));
         }
         else{
-            return view('login');
+            return view('auth.login');
         }
     }
 
