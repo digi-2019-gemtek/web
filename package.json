@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@coreui/coreui": "^2.1.16",
+        "perfect-scrollbar": "^1.4.0",
         "startbootstrap-sb-admin-2": "^4.0.7"
     }
 }
