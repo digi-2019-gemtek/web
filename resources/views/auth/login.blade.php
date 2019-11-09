@@ -2,54 +2,50 @@
 
 @section('content')
 <div class="container">
-    
-    <!-- Outer Row -->
     <div class="row justify-content-center">
-        
-        <div class="col-xl-10 col-lg-12 col-md-9">
-            
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+        <div class="col-md-8">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h1>{{__('auth.login')}}</h1>
+                        <p class="text-muted">Sign In to your account</p>
+                        <form class="user" method="POST" action="{{ route('auth.login') }}">
+                            @csrf
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="icon-user"></i>
+                                    </span>
                                 </div>
-                                <form class="user" method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="account" name="account" placeholder="{{__('auth.account')}}" value="{{ old('email') }}" required autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="{{__('auth.password')}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="remember">{{ __('auth.rememberMe') }}</label>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        {{ __('auth.login') }}
-                                    </button>
-                                </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">{{ __('auth.haveForgotPassword') }}</a>
+                                <input type="text" class="form-control" id="account" name="account" placeholder="{{__('auth.account')}}" value="{{ old('account') }}" required autofocus>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="icon-lock"></i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{__('auth.password')}}" required>
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="form-check checkbox">
+                                    <input type="checkbox" class="form-check-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="remember">{{ __('auth.rememberMe') }}</label>
                                 </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4" type="button">{{__('auth.login')}}</button>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <button class="btn btn-link px-0" type="button">{{__('auth.haveForgotPassword')}}</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
         </div>
-        
     </div>
-
-    
 </div>
 @endsection

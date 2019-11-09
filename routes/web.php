@@ -1,30 +1,27 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Dashboard;
 
 Route::get('/', ['middleware' => 'auth', function() {
     return Redirect::to('/dashboard'); 
 }]);
 
-// Route::get('profile', [
-//     'middleware' => 'auth',
-//     'uses' => 'ProfileController@show'
-// ]);
+    
+Route::group(['as' => 'auth.'], function () {
+    // These routes require the user to be logged in
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/dashboard', [Dashboard::class, 'show'])->name('dashboard');
+        Route::get('/logout', 'LoginController@logout')->name('logout');
+    });
+    
+    // These routes require no user to be logged in
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('/login', [LoginController::class, 'show'])->name('login');
+        Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+    });
+});
+        
 
-Route::get('/login', 'LoginController@show');
-
-Route::post('/login', [
-    'as' => 'login',
-    'uses' => 'LoginController@login'
-]);
-
-Route::get('/logout', 'LoginController@logout');
+        
+        

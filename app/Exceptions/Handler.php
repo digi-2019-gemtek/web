@@ -52,6 +52,6 @@ class Handler extends ExceptionHandler
     }
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        return redirect()->guest('login')->with('status', 'danger')->with('message', __('auth.pleaseLoginFirst'));
+        return redirect()->route('auth.login')->with('status', 'danger')->with('message', __('auth.pleaseLoginFirst'));
     }
 }

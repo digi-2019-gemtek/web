@@ -1,0 +1,10 @@
+{
+    "blade.format.enable": true,
+    "emmet.triggerExpansionOnTab": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "onecentlin.laravel-blade",
+    "emmet.includeLanguages": {
+        "blade": "html"
+    },
+    "editor.formatOnPaste": true,
+}
